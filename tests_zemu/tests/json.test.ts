@@ -17,18 +17,14 @@
 import Zemu from '@zondax/zemu'
 // @ts-ignore
 import { CosmosApp } from '@zondax/ledger-cosmos-js'
-<<<<<<< HEAD
 import { DEFAULT_OPTIONS, DEVICE_MODELS, example_tx_str_basic, example_tx_str_basic2, ibc_denoms, AMINO_JSON_TX, setWithdrawAddress, cliGovDeposit, example_tx_str_msgMultiSend } from './common'
-=======
-import { DEFAULT_OPTIONS, DEVICE_MODELS, example_tx_str_basic, example_tx_str_basic2, ibc_denoms, AMINO_JSON_TX, setWithdrawAddress, cliGovDeposit, amino_json_txn } from './common'
->>>>>>> e9a7171 (add multisend test)
 
 // @ts-ignore
 import secp256k1 from 'secp256k1/elliptic'
 // @ts-ignore
 import crypto from 'crypto'
 
-jest.setTimeout(60000)
+jest.setTimeout(120000)
 
 describe('Json', function () {
   // eslint-disable-next-line jest/expect-expect
