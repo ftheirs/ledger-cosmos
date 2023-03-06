@@ -32,7 +32,7 @@ jest.setTimeout(60000)
 
 describe('Json', function () {
   // eslint-disable-next-line jest/expect-expect
-  test.each(DEVICE_MODELS)('can start and stop container', async function (m) {
+  test.concurrent.each(DEVICE_MODELS)('can start and stop container', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...DEFAULT_OPTIONS, model: m.name })
@@ -41,7 +41,7 @@ describe('Json', function () {
     }
   })
 
-  test.each(DEVICE_MODELS)('sign basic normal', async function (m) {
+  test.concurrent.each(DEVICE_MODELS)('sign basic normal', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...DEFAULT_OPTIONS, model: m.name })
@@ -86,7 +86,7 @@ describe('Json', function () {
     }
   })
 
-  test.each(DEVICE_MODELS)('sign basic normal2', async function (m) {
+  test.concurrent.each(DEVICE_MODELS)('sign basic normal2', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...DEFAULT_OPTIONS, model: m.name })
@@ -130,7 +130,7 @@ describe('Json', function () {
     }
   })
 
-  test.each(DEVICE_MODELS)('sign basic with extra fields', async function (m) {
+  test.concurrent.each(DEVICE_MODELS)('sign basic with extra fields', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...DEFAULT_OPTIONS, model: m.name })
@@ -175,7 +175,7 @@ describe('Json', function () {
     }
   })
 
-  test.each(DEVICE_MODELS)('ibc denoms', async function (m) {
+  test.concurrent.each(DEVICE_MODELS)('ibc denoms', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...DEFAULT_OPTIONS, model: m.name })
@@ -220,7 +220,7 @@ describe('Json', function () {
     }
   })
 
-  test.each(DEVICE_MODELS)('SetWithdrawAddress', async function (m) {
+  test.concurrent.each(DEVICE_MODELS)('SetWithdrawAddress', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...DEFAULT_OPTIONS, model: m.name })
@@ -265,7 +265,7 @@ describe('Json', function () {
     }
   })
 
-  test.each(DEVICE_MODELS)('CLIGovDeposit', async function (m) {
+  test.concurrent.each(DEVICE_MODELS)('CLIGovDeposit', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...DEFAULT_OPTIONS, model: m.name })
