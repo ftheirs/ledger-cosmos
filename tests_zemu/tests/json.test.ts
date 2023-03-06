@@ -17,7 +17,11 @@
 import Zemu from '@zondax/zemu'
 // @ts-ignore
 import { CosmosApp } from '@zondax/ledger-cosmos-js'
+<<<<<<< HEAD
 import { DEFAULT_OPTIONS, DEVICE_MODELS, example_tx_str_basic, example_tx_str_basic2, ibc_denoms, AMINO_JSON_TX, setWithdrawAddress, cliGovDeposit, example_tx_str_msgMultiSend } from './common'
+=======
+import { DEFAULT_OPTIONS, DEVICE_MODELS, example_tx_str_basic, example_tx_str_basic2, ibc_denoms, AMINO_JSON_TX, setWithdrawAddress, cliGovDeposit, amino_json_txn } from './common'
+>>>>>>> e9a7171 (add multisend test)
 
 // @ts-ignore
 import secp256k1 from 'secp256k1/elliptic'
@@ -306,11 +310,16 @@ describe('Json', function () {
     }
   })
 
-    test.each(DEVICE_MODELS)('MsgMultisend', async function (m) {
+  test.concurrent.each(DEVICE_MODELS)('MsgMultisend', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...DEFAULT_OPTIONS, model: m.name })
       const app = new CosmosApp(sim.getTransport())
+
+      // Activate expert mode
+      await sim.clickRight()
+      await sim.clickBoth()
+      await sim.clickLeft()
 
       const path = [44, 118, 0, 0, 0]
       const tx = Buffer.from(JSON.stringify(example_tx_str_msgMultiSend))
